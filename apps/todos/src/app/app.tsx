@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Todo } from '@my-first-nx-app/data';
 
-interface Todo {
-  title: string
-}
 
 export const App = () => {
   const [todos, setTodos] = useState<Todo []>([
@@ -10,13 +8,24 @@ export const App = () => {
     { title: 'Todo 2' }
   ]);
 
+  useEffect(() => {
+    fetch('api/todos')
+      .then((_) => _.json())
+      .then(setTodos);
+  }, []);
+
   const addTodo = () => {
-    setTodos([
-      ...todos,
-      {
-        title: `New todo ${Math.floor(Math.random() * 1000)}`
-      }
-    ]);
+    fetch('/api/addTodo', {
+      method: 'POST',
+      body: ''
+    }).then((_) => _.json())
+      .then(newTodo => {
+        setTodos([
+          ...todos,
+          newTodo
+        ]);
+      });
+
   };
   return (
     <>
