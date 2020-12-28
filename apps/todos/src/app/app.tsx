@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Todo } from '@my-first-nx-app/data';
+import { Todos } from '@my-first-nx-app/ui';
 
 
 export const App = () => {
@@ -30,11 +31,7 @@ export const App = () => {
   return (
     <>
       <h1>Todos</h1>
-      <ul>{
-        todos.map((t) => (
-          <li className={'todo'}>{t.title}</li>
-        ))
-      }</ul>
+      <Todos todos={todos   }/>
       <button id={'add-todo'} onClick={addTodo}>
         Add Todo
       </button>

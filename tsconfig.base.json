@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-first-nx-app/data": ["libs/data/src/index.ts"]
+      "@my-first-nx-app/data": ["libs/data/src/index.ts"],
+      "@my-first-nx-app/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
